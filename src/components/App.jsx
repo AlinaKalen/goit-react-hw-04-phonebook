@@ -21,6 +21,7 @@ const App = () => {
   const [filter, setFilter] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -52,14 +53,16 @@ const App = () => {
     setNumber('');
   };
 
-  const handleFilterChange = (filterValue) => {
-    setFilter(filterValue);
+  const handleFilterChange = (e) => {
+     console.log(e);
+    setFilter(e.target.value);
   };
 
   const handleDeleteContact = (contactId) => {
     setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== contactId));
   };
-
+ 
+  
   return (
     <div className={css.Container}>
       <h1>Phonebook</h1>
