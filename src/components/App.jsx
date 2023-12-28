@@ -54,14 +54,17 @@ const App = () => {
   };
 
   const handleFilterChange = (e) => {
-     console.log(e);
+    if (e && e.target) {
     setFilter(e.target.value);
-  };
+  }
+};
 
   const handleDeleteContact = (contactId) => {
     setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== contactId));
   };
- 
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   
   return (
     <div className={css.Container}>
@@ -74,9 +77,15 @@ const App = () => {
         onAddContact={handleAddContact}
       />
 
-      <h2>Contacts</h2>
+       <h2>Contacts</h2>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
-      <ContactList contacts={contacts} onDeleteContact={handleDeleteContact} />
+      <ContactList
+        contacts={contacts
+          .filter((contact) =>
+            contact.name.toLowerCase().includes(filter.toLowerCase())
+          )}
+        onDeleteContact={handleDeleteContact}
+      />
     </div>
   );
 };
