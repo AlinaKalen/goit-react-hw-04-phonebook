@@ -62,9 +62,9 @@ const App = () => {
   const handleDeleteContact = (contactId) => {
     setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== contactId));
   };
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filteredContacts = contacts.filter((contact) =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
   
   return (
     <div className={css.Container}>
